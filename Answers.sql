@@ -13,9 +13,6 @@ INNER JOIN traffic as t ON t.product_id = f.product_id;
   
 --Question 2
 
-```sql
-
-
 -- Select the brand, listing_price as an integer, and a count of all products in finance 
 -- Join brands to finance on product_id
 -- Filter for products with a listing_price more than zero
@@ -28,10 +25,10 @@ INNER JOIN brands AS b
 WHERE listing_price > 0
 GROUP BY b.brand, f.listing_price
 ORDER BY listing_price DESC;
-```
+
 
 -- Question 3
-```sql
+
 -- Select the brand, a count of all products in the finance table, and total revenue
 -- Create four labels for products based on their price range, aliasing as price_category
 -- Join brands to finance on product_id and filter out products missing a value for brand
@@ -49,10 +46,9 @@ JOIN finance as f ON b.product_id = f.product_id
 WHERE brand IS NOT NULL
 GROUP BY b.brand,price_category
 ORDER BY total_revenue DESC;
-```
+
 -- Question 4
 
-```sql
 -- Select brand and average_discount as a percentage
 -- Join brands to finance on product_id
 -- Aggregate by brand
@@ -64,21 +60,19 @@ FROM brands as b
 LEFT JOIN finance as f ON b.product_id = f.product_id
 WHERE b.brand IS NOT NULL
 GROUP BY b.brand;
-```
+
 
 -- Question 5
 
-```sql
 -- Calculate the correlation between reviews and revenue as review_revenue_corr
 -- Join the reviews and finance tables on product_id
 
 SELECT CORR(r.reviews,f.revenue) as review_revenue_corr
 FROM reviews as r 
 LEFT JOIN finance as f ON r.product_id = f.product_id;
-```
+
 -- Question 6
 
-```sql
 -- Calculate description_length
 -- Convert rating to a numeric data type and calculate average_rating
 -- Join info to reviews on product_id and group the results by description_length
@@ -91,11 +85,10 @@ LEFT JOIN reviews as r ON i.product_id = r.product_id
 WHERE i.description IS NOT NULL
 GROUP BY description_length
 ORDER BY description_length ASC;
-```
+
 
 -- Question 7 
 
-```sql
 -- Select brand, month from last_visited, and a count of all products in reviews aliased as num_reviews
 -- Join traffic with reviews and brands on product_id
 -- Group by brand and month, filtering out missing values for brand and month
@@ -111,11 +104,10 @@ WHERE b.brand IS NOT NULL
 AND t.last_visited IS NOT NULL
 GROUP BY b.brand, month
 ORDER BY b.brand, month;
-```
+
 
 -- Question 8
 
-```sql
 -- Create the footwear CTE, containing description and revenue
 -- Filter footwear for products with a description containing %shoe%, %trainer, or %foot%
 -- Also filter for products that are not missing values for description
@@ -135,7 +127,7 @@ WITH footwear AS
 SELECT COUNT(*) AS num_footwear_products, 
     percentile_disc(0.5) WITHIN GROUP (ORDER BY revenue) AS median_footwear_revenue
 FROM footwear;
-```
+
 -- Question 9 
 
 WITH footwear AS 
