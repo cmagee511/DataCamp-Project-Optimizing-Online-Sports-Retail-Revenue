@@ -1,7 +1,4 @@
 --Question 1
-
-```sql
-
 -- Count all columns as total_rows
 -- Count the number of non-missing entries for description, listing_price, and last_visited
 -- Join info, finance, and traffic
@@ -13,7 +10,6 @@ SELECT COUNT(*) as total_rows,
 FROM info as i
 INNER JOIN finance as f ON i.product_id = f.product_id
 INNER JOIN traffic as t ON t.product_id = f.product_id;
-```
   
 --Question 2
 
