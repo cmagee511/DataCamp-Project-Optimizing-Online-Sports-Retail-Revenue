@@ -146,4 +146,4 @@ SELECT COUNT(i.*) AS num_clothing_products,
 FROM info AS i
 INNER JOIN finance AS f on i.product_id = f.product_id
 WHERE i.description NOT IN (SELECT description FROM footwear);
-```
+
